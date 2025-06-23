@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultFontName Arial
+skinparam ArrowColor #666666
+skinparam BoxPadding 20
+
+rectangle "TextBox.TextChanged\nevents" as source #LightBlue
+rectangle "Debounce\n(300ms)" as debounce #LightGreen
+rectangle "Where\n(text.Length > 2)" as filter #Orange
+rectangle "SelectMany\n(SearchAsync)" as transform #Yellow
+rectangle "Catch\n(handle errors)" as error #Pink
+rectangle "Subscribe\n(update UI)" as sink #LightGray
+
+source -right-> debounce : "abc..."
+debounce -right-> filter : "abc"
+filter -right-> transform : "abc"
+transform -right-> error : "search\nresults"
+error -right-> sink : "results"
+
+note bottom of source
+  Поток событий
+  изменения текста
+end note
+
+note bottom of debounce
+  Ждем паузу 300мс
+  между вводом
+end note
+
+note bottom of filter
+  Фильтруем короткие
+  запросы
+end note
+
+note bottom of transform
+  Асинхронный поиск
+  в базе данных
+end note
+
+note bottom of error
+  Обработка ошибок
+  поиска
+end note
+
+note bottom of sink
+  Обновление UI
+  результатами
+end note
+
+@enduml

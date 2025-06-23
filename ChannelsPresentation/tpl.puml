@@ -1,0 +1,40 @@
+@startuml TPL_Dataflow_Example
+
+' Определяем стили
+skinparam component {
+    BackgroundColor LightBlue
+    BorderColor Black
+    ArrowColor Black
+}
+
+' Определяем компоненты
+[Input Orders] as input
+[BufferBlock<Order>] as buffer #LightGreen
+[TransformBlock<Order, ProcessedOrder>] as transform #LightYellow
+[ActionBlock<ProcessedOrder>] as action #LightPink
+
+' Связи между компонентами
+input -down-> buffer : Orders
+buffer -down-> transform : Order
+transform -down-> action : ProcessedOrder
+
+' Добавляем описания
+note right of buffer
+  Буферизует входящие заказы
+  Capacity = 100
+end note
+
+note right of transform
+  Обогащает заказ данными:
+  - вычисляет цены
+  - добавляет скидки
+  - считает налоги
+  MaxDegreeOfParallelism = 4
+end note
+
+note right of action
+  Сохраняет заказ в БД
+  MaxDegreeOfParallelism = 4
+end note
+
+@enduml
