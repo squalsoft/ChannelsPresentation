@@ -46,7 +46,10 @@ Console.WriteLine();
 
 //await new TplDataflowExample().RunFirstBlocks();
 
-await new TplDataflowExample().RunShopBlocks();
+//await new TplDataflowExample().RunShopBlocks();
+
+// Решение проблемы блокировки CPU с помощью Thread.Yield
+await new ThreadYieldExample().Run();
 
 // await new RxExample().RunSubject();
 //await new RxExample().RunStockMonitor();
