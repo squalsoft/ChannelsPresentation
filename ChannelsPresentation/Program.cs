@@ -48,11 +48,8 @@ Console.WriteLine();
 
 //await new TplDataflowExample().RunShopBlocks();
 
-// Демонстрация Race Condition и решения
-await new RaceConditionExample().Run();
-
-// Показать типичные паттерны race condition
-RaceConditionPatterns.ShowCommonPatterns();
+// Демонстрация Deadlock и решения
+await new DeadlockExample().Run();
 
 // Решение проблемы блокировки CPU с помощью Thread.Yield
 //await new ThreadYieldExample().Run();
