@@ -20,10 +20,10 @@ namespace ChannelsPresentation.Benchmarks
             app.MapGet("/async", async () => await Task.Delay(delay));
 
             app.Use(async (context, next) =>
-                        {
-                            Interlocked.Increment(ref requestsCount);
-                            await next();
-                        });
+            {
+                Interlocked.Increment(ref requestsCount);
+                await next();
+            });
 
             new Thread(_ =>
             {
