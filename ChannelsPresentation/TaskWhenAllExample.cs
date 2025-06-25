@@ -25,13 +25,20 @@ namespace ChannelsPresentation
             Console.WriteLine("--- 1. Базовый пример ---");
 
             Console.WriteLine("🚀 Запускаем 3 задачи параллельно...");
+
+
+            await DownloadDataAsync("Сервер-A", 1000); // 1 сек
+            await DownloadDataAsync("Сервер-B", 1500); // 1.5 сек
+            await DownloadDataAsync("Сервер-C", 800); // 0.8 сек
+            // 3.3 сек
             
             var task1 = DownloadDataAsync("Сервер-A", 1000);
             var task2 = DownloadDataAsync("Сервер-B", 1500);
             var task3 = DownloadDataAsync("Сервер-C", 800);
 
             // Ждем завершения ВСЕХ задач
-            var results = await Task.WhenAll(task1, task2, task3);
+            var results = await Task.WhenAll(task1, task2, task3); 
+            // 1.5 сек
 
             Console.WriteLine("✅ Все задачи завершены!");
             foreach (var result in results)
