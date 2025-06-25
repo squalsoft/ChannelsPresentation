@@ -15,7 +15,6 @@ namespace ChannelsPresentation
             await DemoBasicAsyncAwait();
             await DemoSequentialVsParallel();
             await DemoErrorHandling();
-            ShowImportance();
         }
 
         // 1. Базовый пример async/await
@@ -119,40 +118,7 @@ namespace ChannelsPresentation
             
             Console.WriteLine("✅ Операция завершена");
         }
-
-        // Объяснение важности async/await
-        private void ShowImportance()
-        {
-            Console.WriteLine("--- 🎯 ВАЖНОСТЬ ASYNC/AWAIT ---");
-            Console.WriteLine();
-            
-            Console.WriteLine("🔥 БЕЗ Async/Await (синхронный код):");
-            Console.WriteLine("   • Блокирует поток выполнения");
-            Console.WriteLine("   • UI зависает при длительных операциях");
-            Console.WriteLine("   • Плохая масштабируемость сервера");
-            Console.WriteLine("   • Неэффективное использование ресурсов");
-            Console.WriteLine();
-            
-            Console.WriteLine("✨ С Async/Await:");
-            Console.WriteLine("   • 🚀 Неблокирующие операции - поток освобождается");
-            Console.WriteLine("   • 💻 Отзывчивый UI - интерфейс не зависает");
-            Console.WriteLine("   • 📈 Высокая пропускная способность сервера");
-            Console.WriteLine("   • 🎯 Эффективное использование потоков ThreadPool");
-            Console.WriteLine("   • 🧩 Простота написания и понимания кода");
-            Console.WriteLine();
-            
-            Console.WriteLine("📊 МАГИЯ:");
-            Console.WriteLine("   Один поток может обслуживать ТЫСЯЧИ запросов!");
-            Console.WriteLine("   Вместо 1000 потоков -> 1 поток + async/await = 🚀");
-            Console.WriteLine();
-            
-            Console.WriteLine("🏆 КОГДА ИСПОЛЬЗОВАТЬ:");
-            Console.WriteLine("   ✅ Сетевые запросы (HTTP, API)");
-            Console.WriteLine("   ✅ Операции с базой данных");
-            Console.WriteLine("   ✅ Файловые операции");
-            Console.WriteLine("   ✅ Любые I/O операции");
-            Console.WriteLine("   ❌ CPU-интенсивные вычисления (лучше Task.Run)");
-        }
+        
     }
 
     // Практический пример: Загрузка данных о погоде

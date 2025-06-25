@@ -18,6 +18,9 @@ if (args.Length > 0 && args[0].ToLower() == "benchmark")
             case "channels":
                 BenchmarkRunner.RunChannelConfigurationBenchmarks();
                 return;
+            case "asyncvssync":
+                BenchmarkRunner.RunAsyncVsSyncBenchmarks();
+                return;
             case "all":
                 BenchmarkRunner.RunAllBenchmarks();
                 return;
@@ -25,6 +28,7 @@ if (args.Length > 0 && args[0].ToLower() == "benchmark")
                 Console.WriteLine("❌ Неизвестный тип бенчмарка. Доступные опции:");
                 Console.WriteLine("  - dataprocessing: Сравнение Channels, ConcurrentQueue, BlockingCollection и PLINQ");
                 Console.WriteLine("  - channels: Сравнение различных конфигураций Channel");
+                Console.WriteLine("  - asyncvssync: Сравнение Async vs Sync");
                 Console.WriteLine("  - all: Запустить все бенчмарки");
                 return;
         }
