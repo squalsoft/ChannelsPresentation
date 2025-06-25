@@ -5,7 +5,7 @@ namespace ChannelsPresentation;
 /// <summary>
 /// Race Condition и её решения
 /// </summary>
-public class RaceConditionExample
+public class  RaceConditionExample
 {
     private int _counter = 0;
     private int _safeCounter = 0;

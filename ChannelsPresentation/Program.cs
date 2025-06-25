@@ -53,10 +53,10 @@ Console.WriteLine();
 //await new TplDataflowExample().RunShopBlocks();
 
 // Демонстрация Deadlock и решения
-await new DeadlockExample().Run();
+//await new DeadlockExample().Run();
 
 // Решение проблемы блокировки CPU с помощью Thread.Yield
-//await new ThreadYieldExample().Run();
+await new ThreadYieldExample().Run();
 
 // await new RxExample().RunSubject();
 //await new RxExample().RunStockMonitor();

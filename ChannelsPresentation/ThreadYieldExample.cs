@@ -19,6 +19,15 @@ namespace ChannelsPresentation
             await RunBadExample();
             await RunGoodExample();
             await RunPerformanceComparison();
+
+            // РЕЗУЛЬТАТЫ СРАВНЕНИЯ (5000 элементов):
+            //     ┌─────────────────────────┬──────────────┬────────────────┐
+            //     │ Метод                   │ Время (ms)   │ Итерации       │
+            //     ├─────────────────────────┼──────────────┼────────────────┤
+            //     │ Без Thread.Yield        │          57  │       3361358  │
+            //     │ С Thread.Yield          │          56  │        232303  │
+            //     └─────────────────────────┴──────────────┴────────────────┘
+
         }
 
         // ❌ ПЛОХОЙ ПРИМЕР: Активное ожидание без Thread.Yield
@@ -177,8 +186,8 @@ namespace ChannelsPresentation
             Console.WriteLine($"┌─────────────────────────┬──────────────┬────────────────┐");
             Console.WriteLine($"│ Метод                   │ Время (ms)   │ Итерации       │");
             Console.WriteLine($"├─────────────────────────┼──────────────┼────────────────┤");
-            Console.WriteLine($"│ Без Thread.Yield        │ {timeWithout,11} │ {iterationsWithout,14:N0} │");
-            Console.WriteLine($"│ С Thread.Yield          │ {timeWith,11} │ {iterationsWith,14:N0} │");
+            Console.WriteLine($"│ Без Thread.Yield        │ {timeWithout,11}  │ {iterationsWithout,14:N0} │");
+            Console.WriteLine($"│ С Thread.Yield          │ {timeWith,11}  │ {iterationsWith,14:N0} │");
             Console.WriteLine($"└─────────────────────────┴──────────────┴────────────────┘");
             
             var efficiencyImprovement = (double)iterationsWithout / iterationsWith;
