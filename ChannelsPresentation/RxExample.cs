@@ -43,17 +43,19 @@ public class RxExample
 
             return Observable
                 .Merge(stockA, stockB, stockC)  // объединяем потоки
-                .Buffer(2)                     // группируем по 10 значений
+                .Buffer(10)                     // группируем по 10 значений
                 .Select(prices => prices.Average())  // считаем среднее
                 .Where(avg => avg > 100);           // фильтруем
         }
 
+        // Источник данных
         private IObservable<decimal> GetStockPrice(string symbol)
         {
             return Observable.Interval(TimeSpan.FromSeconds(1))
                 .SelectMany(_ => GetPriceAsync(symbol));
         }
 
+        // Симуляция получения внешних данных
         private async Task<decimal> GetPriceAsync(string symbol)
         {
             //await Task.Delay(100);
